@@ -1,5 +1,6 @@
 package com.example.taitran.buzzmovie.controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,7 +12,9 @@ import android.widget.EditText;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.example.taitran.buzzmovie.model.User;
 import com.example.taitran.buzzmovie.model.UserAuthentication;
+import com.example.taitran.buzzmovie.model.UserManagement;
 import com.example.taitran.buzzmovie.model.UserManager;
 
 public class LoginActivity extends AppCompatActivity {
@@ -31,6 +34,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if(user.loginRequest(username.getText().toString(), password.getText().toString())) {
             text = "Login Success";
+            UserManagement userAdd = new UserManager();
+            userAdd.logUser(username.getText().toString(), password.getText().toString());
+            Intent intent = new Intent(this, Dashboard.class);
+            startActivity(intent);
         } else {
             text = "Login Failed";
         }

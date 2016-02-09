@@ -12,9 +12,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.taitran.buzzmovie.model.UserAuthentication;
+import com.example.taitran.buzzmovie.model.UserManager;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import java.util.Map;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -27,8 +31,14 @@ public class WelcomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        UserAuthentication checkUser = new UserManager();
+        if (checkUser.getMap() != null) {
+            Intent intent = new Intent(this, Dashboard.class);
+            startActivity(intent);
+        } else {
+            setContentView(R.layout.activity_welcome);
+            client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+        }
     }
 
     public void onLoginButtonClicked(View w) {
