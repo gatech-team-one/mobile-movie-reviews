@@ -25,6 +25,13 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginButtonPressed(View v) {
+<<<<<<< HEAD
+            Intent intent = new Intent(this, EditPasswordActivity.class);
+            startActivity(intent);
+        }
+        /*
+=======
+>>>>>>> origin/change-password
         Log.d("Login Activity", "Login button pressed");
         UserAuthentication user = new UserManager();
         EditText username = (EditText) findViewById(R.id.userName);
