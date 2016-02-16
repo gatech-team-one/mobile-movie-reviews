@@ -24,10 +24,7 @@ public class EditPasswordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_password);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/change-password
     }
 
     public void cancelButtonPressed(View v) {
