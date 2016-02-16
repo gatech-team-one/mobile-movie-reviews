@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginButtonPressed(View v) {
-            Log.d("Edit Profile Activity", "edit password button pressed");
             Intent intent = new Intent(this, EditPasswordActivity.class);
             startActivity(intent);
         }
