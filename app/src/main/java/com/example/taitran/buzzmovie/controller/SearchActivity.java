@@ -20,6 +20,8 @@ import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.concurrent.CountDownLatch;
+
 import android.widget.ListAdapter;
 import android.widget.Toast;
 
@@ -76,24 +78,50 @@ public class SearchActivity extends AppCompatActivity {
      * @throws IOException if problem with stream
      * @throws JSONException if problem with json result
      */
-    public JSONObject getjsonResults (String query) throws IOException, JSONException{
+    public JSONObject getjsonResults (String query) throws IOException, JSONException, InterruptedException{
         //TODO learn some regex
         query = query.replaceAll("\\s+", "%20");
         Log.d("Search Activity", "Modified query: " + query);
         Log.d("Search Activity", "Opening stream to omdb");
         String url = "http://www.omdbapi.com/?s=" + query;
         //TODO don't do this on the main thread
-        InputStream stream = new URL(url).openStream();
-        StringWriter writer = new StringWriter();
-        IOUtils.copy(stream, writer); //Charset.forName("UTF-8"));
-        String jsonText = writer.toString();
-        stream.close();
-        writer.close();
+        /*class StreamThread implements Runnable {
+            String url;*/
+            String jsonText;
+            /*public StreamThread(String url) {
+                this.url = url;
+            }
+
+            public void run(){
+                try {*/
+                    InputStream stream = new URL(url).openStream();
+                    StringWriter writer = new StringWriter();
+                    IOUtils.copy(stream, writer); //Charset.forName("UTF-8"));
+                    jsonText = writer.toString();
+                    stream.close();
+                    writer.close();
+                /*} catch (IOException e) {
+                    //ehh let parse json catch the exception
+                    jsonText = "";
+                }
+            }
+
+            public String getJsonText() {
+                return jsonText;
+            }
+        }
+
+        StreamThread st = new StreamThread(url);
+        //maybe wait for this thread to finish
+        //do something in the meantime...loading wheel?
+        */
+
         Log.d("Search Activity", "stream successful");
+        //return new JSONObject(st.getJsonText());
         return new JSONObject(jsonText);
     }
 
-    public void goButtonPressed(View v) throws IOException, JSONException{
+    public void goButtonPressed(View v){
         String query = searchEditText.getText().toString();
         Log.d("Search Activity", "Search for " + query);
         try {
@@ -117,6 +145,7 @@ public class SearchActivity extends AppCompatActivity {
         Log.d("Search Activity", "cancel button pressed");
         lView.setVisibility(View.GONE);
         lView.setAdapter(null);
+        searchEditText.setText("");
         //Intent dash = new Intent(this, Dashboard.class);
         //startActivity(dash);
     }
