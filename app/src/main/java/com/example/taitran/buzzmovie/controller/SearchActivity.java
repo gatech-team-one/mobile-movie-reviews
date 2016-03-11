@@ -51,7 +51,20 @@ public class SearchActivity extends AppCompatActivity {
     private RecyclerView viewList;
     private EditText searchEditText;
 
-
+    /**
+     * 0 : all
+     * 1 : movies
+     * 2 : series
+     * 3 : episode
+     */
+    public static int searchType;
+    /**
+     * 0 : default
+     * 1 : new releases
+     * 2 : by rating
+     * 3 : by major
+     */
+    public static int searchSort;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +88,18 @@ public class SearchActivity extends AppCompatActivity {
         String query = searchEditText.getText().toString();
         //replace all white spaces with "%20", "+" also work
         query = query.replaceAll("\\s+", "%20");
+        switch(searchType) {
+            case 0: break;
+            case 1: query += "&type=movie";
+                break;
+            case 2: query += "&type=series";
+                break;
+            case 3: query += "&type=episode";
+                break;
+        }
+
+        //TODO sorting...should we add every movie searched for to the db?
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET,
                 url + query,
                 (String) null,
