@@ -7,8 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.content.Context;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.taitran.buzzmovie.Rating;
-
 /**
  * Created by taitran on 2/15/2016.
  * if you want to see how the user table looks like (easy to debug later on) go to:
@@ -30,8 +28,8 @@ public class Database extends SQLiteOpenHelper{
     protected static final String bio = "bio";
 
     private static final String RATINGS_TABLE = "Ratings";
-    private static final String rating = "rating";
-    private static final String review = "review";
+    private static final String score = "score";
+    private static final String comment = "comment";
 
     private static final String MOVIE_TABLE = "Movies";
     private static final String title = "title";
@@ -66,8 +64,8 @@ public class Database extends SQLiteOpenHelper{
                 "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "movie_id INTEGER, " +
                 "user_id INTEGER, " +
-                rating + " REAL, " +
-                review + " TEXT, " +
+                score + " REAL, " +
+                comment + " TEXT, " +
                 "FOREIGN KEY(movie_id) REFERENCES " + MOVIE_TABLE + "(_id), " + //reference to the movie in our db
                 "FOREIGN KEY(user_id) REFERENCES " + USER_TABLE + "(_id)) "); //reference to user);
     }
@@ -103,21 +101,21 @@ public class Database extends SQLiteOpenHelper{
     }
 
     //get the data if username exists
-    protected Cursor getData(String name) {
+    protected Cursor getUserData(String name) {
         SQLiteDatabase data = this.getReadableDatabase();
         return data.rawQuery("Select * from " + USER_TABLE + " where " + username + "=?", new String[]{name });
     }
 
     //insert data to the User table(register)
-    protected void insert(String username, String password, String email) {
+    protected void addUser(String username, String password, String email) {
         SQLiteDatabase data = this.getWritableDatabase();
         ContentValues columnIndex = new ContentValues();
-        columnIndex.put("username", username);
-        columnIndex.put("password", password);
-        columnIndex.put("email", email);
-        columnIndex.put("major", "");
-        columnIndex.put("bio", "");
-        data.insert("User", null, columnIndex);
+        columnIndex.put(this.username, username);
+        columnIndex.put(this.password, password);
+        columnIndex.put(this.email, email);
+        columnIndex.put(this.major, "");
+        columnIndex.put(this.bio, "");
+        data.insert(USER_TABLE, null, columnIndex);
     }
 
     //update major info to server
@@ -197,8 +195,8 @@ public class Database extends SQLiteOpenHelper{
         ContentValues columnIndex = new ContentValues(); //add rating
         columnIndex.put("movie_id", m_id);
         columnIndex.put("user_id", u_id);
-        columnIndex.put(this.rating, movie_score);
-        columnIndex.put(this.review, movie_comment);
+        columnIndex.put(this.score, movie_score);
+        columnIndex.put(this.comment, movie_comment);
         db.insert(RATINGS_TABLE, null, columnIndex);
     }
 

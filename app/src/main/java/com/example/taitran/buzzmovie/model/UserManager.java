@@ -42,7 +42,7 @@ public class UserManager implements UserAuthentication, UserManagement{
             throw new IllegalArgumentException("Invalid password");
         }
 
-        db.insert(username, password, email);
+        db.addUser(username, password, email);
     }
 
     //when dealing with Cursor object always check for null to void SQLite EXCEPTION
@@ -57,7 +57,7 @@ public class UserManager implements UserAuthentication, UserManagement{
         if (db.IsEmpty(username)) { //userId method couldn't find matching username
             throw new IllegalArgumentException("Username does not exist.");
         }
-        Cursor data = db.getData(username);
+        Cursor data = db.getUserData(username);
         if( data != null && data.moveToFirst() ) {
             name = data.getString(data.getColumnIndex(db.username));
             pass = data.getString(data.getColumnIndex(db.password));

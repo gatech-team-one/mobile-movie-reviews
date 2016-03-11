@@ -1,4 +1,4 @@
-package com.example.taitran.buzzmovie;
+package com.example.taitran.buzzmovie.model;
 
 import com.example.taitran.buzzmovie.model.Movie;
 import com.example.taitran.buzzmovie.model.User;

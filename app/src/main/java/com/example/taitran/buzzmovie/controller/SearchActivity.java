@@ -1,18 +1,30 @@
 package com.example.taitran.buzzmovie.controller;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONArray;
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -140,6 +152,11 @@ public class SearchActivity extends AppCompatActivity {
         searchEditText.setText("");
         movieList.clear();
         viewList.setAdapter(myadapter);
+    }
+
+    public void settingsButtonPressed(View v) {
+        DialogFragment menuDialog = new MenuDialog();
+        menuDialog.show(getFragmentManager().beginTransaction(), "Search Settings");
     }
 
 }

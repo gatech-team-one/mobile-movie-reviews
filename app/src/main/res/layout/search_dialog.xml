@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Type"
+        android:id="@+id/textView3"
+        android:layout_gravity="center_horizontal"
+        android:textSize="45dp"
+        android:layout_marginTop="76dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Movies"
+        android:id="@+id/moviesCheckBox"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Series"
+        android:id="@+id/seriesCheckBox"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_below="@+id/moviesCheckBox"
+        android:layout_alignStart="@+id/episodeCheckBox" />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Episode"
+        android:id="@+id/episodeCheckBox"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20dp"
+        android:layout_below="@+id/seriesCheckBox"
+        android:layout_alignStart="@+id/moviesCheckBox" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Sort By"
+        android:id="@+id/textView4"
+        android:layout_gravity="center_horizontal"
+        android:textSize="45dp"
+        android:layout_below="@+id/episodeCheckBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="37dp" />
+    <Spinner
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:textColor="#292929"
+        android:textSize="20dp"
+        android:id="@+id/sortspinner"
+        android:spinnerMode="dropdown"
+        android:layout_gravity="center_horizontal"
+        android:touchscreenBlocksFocus="false"
+        android:layout_below="@+id/episodeCheckBox"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="97dp" />
+
+</RelativeLayout>

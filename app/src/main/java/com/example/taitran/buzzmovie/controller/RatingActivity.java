@@ -10,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.example.taitran.buzzmovie.Rating;
+import com.example.taitran.buzzmovie.model.Rating;
 import com.example.taitran.buzzmovie.model.Database;
 import com.example.taitran.buzzmovie.model.Movie;
 import com.example.taitran.buzzmovie.model.UserManagement;
