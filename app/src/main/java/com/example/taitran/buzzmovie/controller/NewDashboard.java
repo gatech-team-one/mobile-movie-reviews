@@ -22,7 +22,7 @@ public class NewDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_newDashboard);
+        setContentView(R.layout.activity_new_dashboard);
         myadapter = new FragmentAdapter(getSupportFragmentManager());
         // add the fragment object to the adapter and attached it to the activity
         myadapter.addFragment(new Frag1(), "Pinkish");
