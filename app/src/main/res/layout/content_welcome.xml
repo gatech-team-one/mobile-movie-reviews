@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/blueradial">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="70dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+
+        <ImageView android:src="@drawable/buzzmovie3"
+            android:layout_width="wrap_content"
+            android:layout_height="72dp"
+            android:layout_marginBottom="60dp"
+            android:layout_gravity="center_horizontal" />
+        <Button
+            android:id="@+id/welcomeLoginBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="15dp"
+            android:padding="12dp"
+            android:onClick="onLoginButtonClicked"
+            android:text="LOGIN"/>
+
+        <Button
+            android:id="@+id/welcomeRegisterBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="12dp"
+            android:onClick="onRegisterButtonClicked"
+            android:text="REGISTER"/>
+
+
+    </LinearLayout>
+</ScrollView>
