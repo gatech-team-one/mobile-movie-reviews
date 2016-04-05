@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_search">
+
+
+    <RelativeLayout
+        android:id="@+id/searchTextLayout"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true">
+        <EditText
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:id="@+id/searchBar"
+            android:hint="Search for Movies"
+            android:paddingStart="20dp"
+            android:background="@null"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/primaryText"
+            android:textColorHint="@color/primaryText" />
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:id="@+id/clrBtn"
+            android:src="@drawable/ic_cancel"
+            android:background="@null"
+            android:onClick="clearButtonPressed"
+            android:tint="@color/primaryText"
+            android:tintMode="src_atop"
+            android:scaleType="centerInside"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/settingsBtn" />
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:id="@+id/goBtn"
+            android:src="@drawable/ic_ok"
+            android:background="@null"
+            android:onClick="goButtonPressed"
+            style="@style/HelloDarknessButton"
+            android:tint="@color/primaryText"
+            android:tintMode="src_atop"
+            android:scaleType="centerInside"
+            android:layout_alignParentTop="true"
+            android:layout_toStartOf="@+id/clrBtn" />
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:id="@+id/settingsBtn"
+            android:src="@drawable/ic_settings"
+            android:background="@null"
+            android:onClick="settingsButtonPressed"
+            style="@style/HelloDarknessButton"
+            android:tint="@color/primaryText"
+            android:tintMode="src_atop"
+            android:scaleType="centerInside"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/searchTextLayout"
+        android:id="@+id/myList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
+    </android.support.v7.widget.RecyclerView>
+
+</RelativeLayout>
