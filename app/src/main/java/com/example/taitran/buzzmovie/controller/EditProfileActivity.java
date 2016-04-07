@@ -1,6 +1,5 @@
 package com.example.taitran.buzzmovie.controller;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,43 +13,84 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
 import com.example.taitran.buzzmovie.model.UserManagement;
 import com.example.taitran.buzzmovie.model.UserManager;
 
-import org.w3c.dom.Text;
-
 /**
- * Activity to edit your profile
  * Created by andie on 2/14/2016.
  */
 public class EditProfileActivity extends Fragment implements AdapterView.OnItemSelectedListener, OnClickListener{
+    /**
+     * The user manager.
+     */
     private UserManagement userMan;
+    /**
+     * The text view for the profile.
+     */
     private TextView usernameTextView;
+    /**
+     * The text view for the email.
+     */
     private TextView emailTextView;
+    /**
+     * To edit the text.
+     */
     private EditText emailEditText;
+    /**
+     * To edit the email.
+     */
     private Button editEmailButton;
+    /**
+     * To edit the password.
+     */
     private Button editPassButton;
+    /**
+     * To edit the major.
+     */
     private Button editMajorButton;
+    /**
+     * To edit the bio.
+     */
     private Button editBioButton;
+    /**
+     * Boolean for editing the email.
+     */
     private boolean editingEmail = false;
+    /**
+     * The text view for the major.
+     */
     private TextView majorTextView;
+    /**
+     * The spinner.
+     */
     private Spinner spinner;
+    /**
+     * Boolean for editing the major.
+     */
     private boolean editingMajor = false;
-
+    /**
+     * The text view for the bio.
+     */
     private TextView bioTextView;
+    /**
+     * Edit the bio.
+     */
     private EditText bioEditText;
+    /**
+     * Boolean to edit the bio.
+     */
     private boolean editingBio = false;
 
     /**
-     * Empty constructor
+     * Empty constructor.
      */
     public EditProfileActivity() {
         // Required empty public constructor
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -105,9 +145,9 @@ public class EditProfileActivity extends Fragment implements AdapterView.OnItemS
 
     /**
      * redirect the user to EditPasswordActivity
-     * @param V reference to the password button
+     * @param v reference to the password button
      */
-    public void editPasswordButtonPressed(View V) {
+    public void editPasswordButtonPressed(View v) {
 
     }
 
@@ -118,6 +158,12 @@ public class EditProfileActivity extends Fragment implements AdapterView.OnItemS
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {}
+
+    /**
+     * edit and change the bio for the user in database
+     * @param v reference to the bio button
+     */
+
 
     @Override
     public void onClick(View v) {

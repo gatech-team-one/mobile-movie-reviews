@@ -9,9 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.content.Intent;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.taitran.buzzmovie.model.Database;
@@ -19,16 +17,30 @@ import com.example.taitran.buzzmovie.model.FragmentAdapter;
 import com.example.taitran.buzzmovie.model.UserManagement;
 import com.example.taitran.buzzmovie.model.UserManager;
 
-/**
- * The dashboard for the user
- */
 public class Dashboard extends AppCompatActivity{
-
+    /**
+     * User management.
+     */
     private UserManagement userMan;
+    /**
+     * The toolbar.
+     */
     private Toolbar mtoolbar;
+    /**
+     * The fragment adapter.
+     */
     private FragmentAdapter myadapter;
+    /**
+     * The view pager.
+     */
     private ViewPager mpager;
+    /**
+     * The tab layout.
+     */
     private TabLayout mTab;
+    /**
+     * The database.
+     */
     private Database db;
 
     @Override
@@ -76,6 +88,7 @@ public class Dashboard extends AppCompatActivity{
         }
         return super.onOptionsItemSelected(item);
     }
+
 
     @Override
     public void onBackPressed() {

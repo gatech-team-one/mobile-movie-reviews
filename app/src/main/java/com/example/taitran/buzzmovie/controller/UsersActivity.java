@@ -1,11 +1,9 @@
 package com.example.taitran.buzzmovie.controller;
 
 import android.app.DialogFragment;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,17 +21,42 @@ import java.util.ArrayList;
  * display user list and handle onclicklistener
  */
 public class UsersActivity extends Fragment {
-
-    public static final String[] statuses
-            = new String[] {"Default", "Unlocked", "Locked", "Banned"};
+    /**
+     * Status of user
+     */
+    public static final String[] statuses = new String[] {"Default", "Unlocked", "Locked", "Banned"};
+    /**
+     * Status spinner
+     */
     Spinner statusSpinner;
+    /**
+     * Selected status
+     */
     String statusSelected;
+    /**
+     * User list
+     */
     ListView usersListView;
+    /**
+     * User manager
+     */
     UserManager userMan;
+    /**
+     * User list
+     */
     ArrayList<String> userList;
+    /**
+     * Filter button
+     */
     Button bFilter;
+    /**
+     * Username selected
+     */
     public static String usernameSelected;
 
+    /**
+     * Empty constructor
+     */
     public UsersActivity() {
 
     }

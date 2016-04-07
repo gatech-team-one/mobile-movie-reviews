@@ -1,13 +1,8 @@
 package com.example.taitran.buzzmovie.controller;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,29 +11,36 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.example.taitran.buzzmovie.model.Database;
 import com.example.taitran.buzzmovie.model.FragmentAdapter;
 import com.example.taitran.buzzmovie.model.UserManagement;
 import com.example.taitran.buzzmovie.model.UserManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * The activity class for the admin
- */
 public class AdminActivity extends AppCompatActivity {
-
+    /**
+     * The toolbar for the admin.
+     */
     private Toolbar mtoolbar;
+    /**
+     * The fragment adapter.
+     */
     private FragmentAdapter myadapter;
+    /**
+     * The view pager.
+     */
     private ViewPager mpager;
+    /**
+     * The tab layout.
+     */
     private TabLayout mTab;
+    /**
+     * The database.
+     */
     private Database db;
+    /**
+     * User management for the admin.
+     */
     private UserManagement userMan;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +58,7 @@ public class AdminActivity extends AppCompatActivity {
         mpager.setAdapter(myadapter);
         mTab.setupWithViewPager(mpager);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

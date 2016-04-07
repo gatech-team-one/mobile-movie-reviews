@@ -4,17 +4,31 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * The movie class
  * Created by taitr on 2/28/2016.
  */
 public class Movie implements Parcelable{
 
+    /**
+     * The title of the movie
+     */
     private String title;
+    /**
+     * The release year
+     */
     private String year;
+    /**
+     * The movie type
+     */
     private String type;
+    /**
+     * The movie poster
+     */
     private String poster;
 
-
+    /**
+     * The movie
+     * @param data the movie data
+     */
     public Movie(Parcel data) {
         title = data.readString();
         year = data.readString();
@@ -79,8 +93,10 @@ public class Movie implements Parcelable{
         dest.writeString(poster);
     }
 
-    public static final Parcelable.Creator<Movie> CREATOR
-            = new Parcelable.Creator<Movie>() {
+    /**
+     * The new movie added in
+     */
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
         public Movie createFromParcel(Parcel in) {
             return new Movie(in);
         }

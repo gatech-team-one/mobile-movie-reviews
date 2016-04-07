@@ -12,32 +12,54 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.example.taitran.buzzmovie.model.FilterList;
 import com.example.taitran.buzzmovie.model.FilterMovie;
 import com.example.taitran.buzzmovie.model.RedAdapter;
 
-
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Recommendation extends Fragment implements AdapterView.OnItemSelectedListener, OnClickListener {
-
+    /**
+     * Major spinner
+     */
     private Spinner majorSpinner;
+    /**
+     * Rating spinner
+     */
     private Spinner ratingSpinner;
+    /**
+     * Filter for the movie
+     */
     private FilterMovie filterL;
-    private static final String[] majors
-            = new String[] {"Default", "CS", "EE", "ME", "ISYE", "Math", "Phys", "Chem", "ChemE"};
-    private static final String[] rating
-            = new String[] {"Default", "5", "4", "3", "2", "1"};
+    /**
+     * String list
+     */
+    private static final String[] majors = new String[] {"Default", "CS", "EE", "ME", "ISYE", "Math", "Phys", "Chem", "ChemE"};
+    /**
+     * Rating list
+     */
+    private static final String[] rating = new String[] {"Default", "5", "4", "3", "2", "1"};
+    /**
+     * Adapter
+     */
     public RedAdapter myadapter;
+    /**
+     * Movie list
+     */
     private ArrayList<FilterList> movies;
+    /**
+     * Recycle view
+     */
     private RecyclerView viewList;
+    /**
+     * Filter button
+     */
     private Button filterButton;
 
     /**
-     *
+     * Empty constructor
      */
     public Recommendation() {
         // Required empty public constructor

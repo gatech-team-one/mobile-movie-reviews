@@ -1,4 +1,3 @@
-
 package com.example.taitran.buzzmovie.controller;
 
 
@@ -23,14 +22,15 @@ import com.example.taitran.buzzmovie.model.UserManager;
 public class AddUser extends Fragment {
 
     /**
-     * Empty constructor of add user.
+     * Empty constructor
      */
     public AddUser() {
         // Required empty public constructor
     }
 
+
     @Override
-    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_add_user, container, false);
@@ -47,18 +47,13 @@ public class AddUser extends Fragment {
                 String type = "Admin";
                 Log.d("Register Activity", "Register button pressed");
                 UserManagement manager = new UserManager(getActivity());
-                EditText username = (EditText) getActivity().findViewById(
-                        R.id.regUserName);
-                EditText password = (EditText) getActivity().findViewById(
-                        R.id.regPass);
-                EditText email = (EditText) getActivity().findViewById(
-                        R.id.regEmail);
+                EditText username = (EditText) getActivity().findViewById(R.id.regUserName);
+                EditText password = (EditText) getActivity().findViewById(R.id.regPass);
+                EditText email = (EditText) getActivity().findViewById(R.id.regEmail);
                 CharSequence text = "Add Account Success";
 
                 try {
-                    manager.addUser(email.getText().toString(),
-                            username.getText().toString(),
-                            password.getText().toString(), type);
+                    manager.addUser(email.getText().toString(), username.getText().toString(), password.getText().toString(), type);
                     username.setText("");
                     password.setText("");
                     email.setText("");

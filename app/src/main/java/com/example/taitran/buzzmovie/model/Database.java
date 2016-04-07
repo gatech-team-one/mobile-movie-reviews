@@ -20,38 +20,110 @@ import java.util.ArrayList;
  * or you can use whatever software that can open SQLITE db.
  */
 public class Database extends SQLiteOpenHelper{
+    /**
+     * The movie database
+     */
     private static final String MOVIE_DATABASE = "Movie_Database";
 
+    /**
+     * The user table
+     */
     private static final String USER_TABLE = "User";
+    /**
+     * User's name
+     */
     protected static final String username = "username";
+    /**
+     * User's password
+     */
     protected static final String password = "password";
+    /**
+     * User's email
+     */
     protected static final String email = "email";
+    /**
+     * User's major
+     */
     protected static final String major = "major";
+    /**
+     * User's bio
+     */
     protected static final String bio = "bio";
+    /**
+     * User's status
+     */
     protected static  final String status = "status";
+    /**
+     * User's type
+     */
     protected static  final String user_type = "type";
-    //User Type
+    /**
+     * User type
+     */
     protected static  final String normal = "User";
+    /**
+     * Admin type
+     */
     protected static  final String admin = "Admin";
-    //STATUSES
+    /**
+     * User's unlocked
+     */
     protected static  final String unlocked = "Unlocked";
+    /**
+     * User is locked
+     */
     protected static  final String locked = "Locked";
+    /**
+     * User is banned
+     */
     protected static  final String banned = "Banned";
+    /**
+     * Active user
+     */
     private static final String ACTIVE_USER = "Active_User";
-
+    /**
+     * Movie rating
+     */
     private static final String RATINGS_TABLE = "Ratings";
+    /**
+     * Movie score
+     */
     private static final String score = "score";
+    /**
+     * Movie comment
+     */
     private static final String comment = "comment";
+    /**
+     * User major
+     */
     private static final String user_major = "user_major";
 
+    /**
+     * Movies
+     */
     private static final String MOVIE_TABLE = "Movies";
+    /**
+     * Movie title
+     */
     private static final String title = "title";
+    /**
+     * Movie date
+     */
     private static final String date = "date";
+    /**
+     * Movie type
+     */
     private static final String type = "type";
+    /**
+     * Movie poster
+     */
     private static final String poster = "poster";
-    //create the database if it doesn't exist;
-    //if database exists, then SQLite will know and open it.
-    //Database name must be unique in SQLite
+    /**
+     * create the database if it doesn't exist
+     * if database exists, then SQLite will know and open it.
+     * Database name must be unique in SQLite
+     * @param context context for database
+     */
     public Database(Context context) {
         super(context, MOVIE_DATABASE, null, 1);
     }
@@ -148,6 +220,7 @@ public class Database extends SQLiteOpenHelper{
      * @param username name of user
      * @param password password ofr user
      * @param email email of user
+     * @param type of user
      */
     protected void addUser(String username, String password, String email, String type) {
         SQLiteDatabase data = this.getWritableDatabase();
@@ -207,6 +280,10 @@ public class Database extends SQLiteOpenHelper{
         return isLoggedIn;
     }
 
+    /**
+     * Return the user
+     * @return the user
+     */
     public Cursor getUser() {
         SQLiteDatabase data = this.getReadableDatabase();
         return data.rawQuery("Select * from " + ACTIVE_USER , null);
@@ -237,7 +314,7 @@ public class Database extends SQLiteOpenHelper{
         newMajor.put("major", major);
         data.update(USER_TABLE, newMajor, "username =?", selectArgs);
         data.update(ACTIVE_USER, newMajor, "username =?", selectArgs);
-}
+    }
 
 
     /**
@@ -301,8 +378,8 @@ public class Database extends SQLiteOpenHelper{
         String movie_comment = rating.getComment();
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String movieSelectQuery = String.format("SELECT _id FROM %s WHERE %s = ? AND %s = %s AND %s = ?",
-                MOVIE_TABLE, title, date, movie_date, type);
+        String movieSelectQuery = String.format("SELECT _id FROM %s WHERE %s = ? AND %s = ?",
+                MOVIE_TABLE, title, type);
         Cursor cursor = db.rawQuery(movieSelectQuery, new String[]{movie_title, movie_type});
         if (!cursor.moveToFirst()) { //movie doesnt exist in database
             ContentValues columnIndex = new ContentValues(); //add new movie
@@ -361,11 +438,11 @@ public class Database extends SQLiteOpenHelper{
         ArrayList<FilterList> movieList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor ratingList = db.rawQuery("SELECT * FROM Ratings WHERE score >= ? AND score < ?+1", new String[] {rating, rating});
-        if(major != "Default" && rating != "Default") {
+        if("Default".equals(major) && !"Default".equals(rating)) {
             ratingList = db.rawQuery("SELECT * FROM Ratings WHERE score >= ? AND score < ?+1 AND user_major = ?", new String[]{rating, rating, major});
-        } else if (major.equals("Default") && rating.equals("Default")) {
+        } else if ("Default".equals(major) && "Default".equals(rating)) {
             ratingList = db.rawQuery("SELECT * FROM Ratings", null);
-        } else if (major != "Default" && rating == "Default") {
+        } else if (!"Default".equals(major) && "Default".equals(rating)) {
             ratingList = db.rawQuery("SELECT * FROM Ratings WHERE user_major = ?", new String[]{major});
         }
             ArrayList<String> exist = new ArrayList<>();
@@ -376,11 +453,11 @@ public class Database extends SQLiteOpenHelper{
                 Cursor avgScore = db.rawQuery("SELECT AVG(score) FROM Ratings WHERE movie_id = ?", new String[]{movie_id});
                 Cursor getMovie = db.rawQuery("SELECT * FROM Movies WHERE _id = ?", new String[]{movie_id});
                 if (!(exist.contains(movie_id))) {
-                    if(major != "Default" && rating != "Default") {
+                    if(!"Default".equals(major) && !"Default".equals(rating)) {
                         avgScore = db.rawQuery("SELECT AVG(score) FROM Ratings WHERE movie_id = ? AND user_major = ?", new String[]{movie_id, user_major});
-                    } else if (major.equals("Default") && rating.equals("Default")) {
+                    } else if ("Default".equals(major) && "Default".equals(rating)) {
                         avgScore = db.rawQuery("SELECT AVG(score) FROM Ratings WHERE movie_id = ?", new String[]{movie_id});
-                    } else if (major != "Default" && rating == "Default") {
+                    } else if (!"Default".equals(major) && "Default".equals(rating)) {
                         avgScore = db.rawQuery("SELECT AVG(score) FROM Ratings WHERE movie_id = ? AND user_major = ?", new String[]{movie_id, user_major});
                     }
 
@@ -413,7 +490,7 @@ public class Database extends SQLiteOpenHelper{
         String userText = "";
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor users;
-        if (statusFilter.equals("Default")) {
+        if ("Default".equals(statusFilter)) {
             users = db.rawQuery("SELECT "
                     + username + ", "
                     + email + ", "
@@ -455,7 +532,13 @@ public class Database extends SQLiteOpenHelper{
         db.update(USER_TABLE, cv, this.username + " = ?", new String[]{username});
     }
 
-
+    /**
+     * The list of ratings
+     * @param movie movie rating
+     * @param score movie score
+     * @param major movie major
+     * @return the rating of the movie
+     */
     public ArrayList<String> getRatings(Movie movie, String score, String major) {
         ArrayList<String> ratingList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -484,16 +567,16 @@ public class Database extends SQLiteOpenHelper{
                 + " WHERE movie_id = ?";
         String[] selectArgs;
 
-        if (major.equals("Default") && score.equals("Default")) {
+        if ("Default".equals(major) && "Default".equals(score)) {
             selectArgs = new String[]{m_id};
-        } else if (major.equals("Default")) {
+        } else if ("Default".equals(major)) {
             int scoreNumber = Integer.parseInt(score);
             query += " AND " + this.score
                     + " >= " + scoreNumber
                     + " AND " + this.score
                     + " <= " + (scoreNumber + 0.99); //in range
             selectArgs = new String[]{m_id};
-        } else if (score.equals("Default")) {
+        } else if ("Default".equals(score)) {
             query += " AND " + user_major
                     + " = ?";
             selectArgs = new String[]{m_id, major};
@@ -520,11 +603,13 @@ public class Database extends SQLiteOpenHelper{
             }
             usernameCursor.close();
             String majorText = ratingCursor.getString(1);
-            if (!majorText.equals(""))
+            if (!"".equals(majorText)) {
                 ratingText += " | " + majorText; //user_major
+            }
             ratingText += "\n"; //score
-            for (int i = 0; i < Float.parseFloat(ratingCursor.getString(2)); i++)
+            for (int i = 0; i < Float.parseFloat(ratingCursor.getString(2)); i++) {
                 ratingText += "\u2605"; //add stars
+            }
             ratingText += "\n" + ratingCursor.getString(3); //comment
             ratingList.add(ratingText);
             ratingText = "";

@@ -1,7 +1,6 @@
 package com.example.taitran.buzzmovie.model;
 
 /**
- * Interface for the list of users
  * Created by taitran on 2/6/2016.
  */
 public interface UserManagement {
@@ -10,6 +9,7 @@ public interface UserManagement {
      * @param email user's email
      * @param username user's name
      * @param password user's pass
+     * @param type of user
      */
     void addUser(String email, String username, String password, String type);
 

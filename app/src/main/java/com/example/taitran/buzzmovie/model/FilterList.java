@@ -1,14 +1,28 @@
 package com.example.taitran.buzzmovie.model;
 
 /**
- * Filtered list
  * Created by taitr on 3/14/2016.
  */
 public class FilterList {
+    /**
+     * The title
+     */
     private String title;
+    /**
+     * The year
+     */
     private String year;
+    /**
+     * The type
+     */
     private String type;
+    /**
+     * The poster
+     */
     private String poster;
+    /**
+     * The score
+     */
     private float score;
 
     /**
@@ -17,6 +31,7 @@ public class FilterList {
      * @param year  get the filter year
      * @param type  get the filter type
      * @param poster get the filter poster
+     * @param score get the filter score
      */
     public FilterList(String title, String year, String type, String poster, float score) {
         this.title = title;
@@ -58,6 +73,10 @@ public class FilterList {
         return poster;
     }
 
+    /**
+     * The score
+     * @return score
+     */
     public float getScore() {
         return score;
     }

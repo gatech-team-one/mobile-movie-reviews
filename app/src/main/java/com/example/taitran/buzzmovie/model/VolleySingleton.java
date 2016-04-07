@@ -4,21 +4,26 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.LruCache;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.ImageLoader;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 
 /**
- * Class for the singleton
  * Created by taitr on 2/27/2016.
  */
 public class VolleySingleton {
-
+    /**
+     * The request queue
+     */
     private RequestQueue requestQueue;
+    /**
+     * The image loader
+     */
     private ImageLoader image;
+    /**
+     * The volley singleton
+     */
     private static VolleySingleton instance;
 
     /**

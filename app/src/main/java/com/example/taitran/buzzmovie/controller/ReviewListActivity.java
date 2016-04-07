@@ -10,30 +10,55 @@ import android.widget.ListView;
 import android.widget.Spinner;
 
 import com.example.taitran.buzzmovie.model.Database;
-import com.example.taitran.buzzmovie.model.FilterMovie;
 import com.example.taitran.buzzmovie.model.Movie;
 import com.example.taitran.buzzmovie.model.myAdapter;
 
 import java.util.ArrayList;
 
 /**
- * Activity to see the list of reviewed movies
  * Created by andie on 3/20/2016.
  */
-public class ReviewListActivity extends AppCompatActivity{
 
+public class ReviewListActivity extends AppCompatActivity{
+    /**
+     * Major spinner
+     */
     private Spinner majorSpinner;
+    /**
+     * Rating spinner
+     */
     private Spinner ratingSpinner;
+    /**
+     * Review list
+     */
     private ListView reviewListView;
-    private FilterMovie filter;
+    /**
+     * Reviews
+     */
     private ArrayList<String> reviews;
-    private static final String[] majors
-            = new String[] {"Default", "CS", "EE", "ME", "ISYE", "Math", "Phys", "Chem", "ChemE"};
-    private static final String[] rating
-            = new String[] {"Default", "5", "4", "3", "2", "1"};
+    /**
+     * Majors
+     */
+    private static final String[] majors = new String[] {"Default", "CS", "EE", "ME", "ISYE", "Math", "Phys", "Chem", "ChemE"};
+    /**
+     * Ratings
+     */
+    private static final String[] rating = new String[] {"Default", "5", "4", "3", "2", "1"};
+    /**
+     * Selected major
+     */
     private String majorSelected;
+    /**
+     * Selected rating
+     */
     private String ratingSelected;
+    /**
+     * Database
+     */
     private Database db;
+    /**
+     * Movie
+     */
     private Movie movie;
 
     @Override
@@ -83,8 +108,8 @@ public class ReviewListActivity extends AppCompatActivity{
     }
 
     /**
-     * Method for when the filter button is pressed
-     * @param v reference to the filter button when pressed
+     * Filter button pressed
+     * @param v reference to the filter button
      */
     public void filterButtonPressed(View v) {
         reviews = db.getRatings(movie, ratingSelected, majorSelected);

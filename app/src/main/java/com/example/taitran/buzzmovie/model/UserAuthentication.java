@@ -1,7 +1,6 @@
 package com.example.taitran.buzzmovie.model;
 
 /**
- * Interface to authenticate the user's login information
  * Created by taitran on 2/6/2016.
  */
 public interface UserAuthentication {

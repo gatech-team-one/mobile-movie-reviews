@@ -8,13 +8,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Class to adapt fragments
  * Created by taitr on 3/27/2016.
  */
 public class FragmentAdapter extends FragmentStatePagerAdapter{
+    /**
+     * List of fragments
+     */
     private final List<Fragment> list = new ArrayList<>();
+    /**
+     * List of titles
+     */
     private final List<String> titleList = new ArrayList<>();
 
+    /**
+     * The fragment adaper
+     * @param fm the fragment manager
+     */
     public FragmentAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -30,9 +39,9 @@ public class FragmentAdapter extends FragmentStatePagerAdapter{
     }
 
     /**
-     * Add fragment
-     * @param fragment fragment to add
-     * @param title title of fragment
+     * Add a fragment
+     * @param fragment the fragment to add
+     * @param title the title of the fragment
      */
     public void addFragment(Fragment fragment, String title) {
         list.add(fragment);

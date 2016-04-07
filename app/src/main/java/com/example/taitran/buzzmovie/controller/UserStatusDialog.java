@@ -21,8 +21,13 @@ import java.util.Arrays;
  * Uses user_status_dialog.xml layout
  */
 public class UserStatusDialog extends DialogFragment implements AdapterView.OnItemSelectedListener{
-
+    /**
+     * Status spinner
+     */
     private Spinner statusSpinner;
+    /**
+     * News status
+     */
     private String newStatus;
 
     @Override

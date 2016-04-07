@@ -18,8 +18,13 @@ import android.widget.TextView;
  * Uses search_dialog.xml layout
  */
 public class MenuDialog extends DialogFragment implements AdapterView.OnItemSelectedListener{
-
+    /**
+     * Spinner for the menu
+     */
     private Spinner typespinner;
+    /**
+     * All the types of media
+     */
     private static final String[] typeList = new String[]{"All", "Movie", "Series", "Episode"};
 
     @Override

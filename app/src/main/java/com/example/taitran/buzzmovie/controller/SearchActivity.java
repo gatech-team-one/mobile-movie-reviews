@@ -37,9 +37,10 @@ import com.example.taitran.buzzmovie.model.VolleySingleton;
 import com.example.taitran.buzzmovie.model.myAdapter;
 
 /**
- * Activity to search through the movie database
  * Created by andie on 2/24/2016.
  */
+
+
 public class SearchActivity extends AppCompatActivity {
 
     private static final String SAVED_MOVIE ="movies" ;
@@ -132,7 +133,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     /**
-     * Return an arraylist that contains movie objects
+     * return an arraylist that contains movie objects
      * the object has the information for each movie
      * @param response take in a JSONObject then process its info
      * @return
@@ -179,10 +180,6 @@ public class SearchActivity extends AppCompatActivity {
         viewList.setAdapter(myadapter);
     }
 
-    /**
-     * Method for when the setting button is pressed
-     * @param v reference to the setting button when pressed
-     */
     public void settingsButtonPressed(View v) {
         DialogFragment menuDialog = new MenuDialog();
         menuDialog.show(getFragmentManager().beginTransaction(), "Search Settings");

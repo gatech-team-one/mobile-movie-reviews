@@ -6,19 +6,17 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.taitran.buzzmovie.model.UserManagement;
 import com.example.taitran.buzzmovie.model.UserManager;
 
 /**
- * Class to edit the password
- * Created by John on 2/15/2016
+ * Created by John on 2/15/2016.
  */
 public class EditPasswordActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +25,8 @@ public class EditPasswordActivity extends AppCompatActivity {
     }
 
     /**
-     * Cancelling editing your password
-     * @param v the cancelling view
+     * Method for when the cancel button is pressed.
+     * @param v reference for the view for the cancel button.
      */
     public void cancelButtonPressed(View v) {
         Log.d("Edit Password Activity", "Cancel button pressed");
@@ -43,8 +41,8 @@ public class EditPasswordActivity extends AppCompatActivity {
     }
 
     /**
-     * Changing your password and hitting submit
-     * @param v the view for submitting
+     * Method for when the submit button is pressed
+     * @param v Reference for the view for the submit button.
      */
     public void submitButtonPressed(View v) {
         Log.d("Edit Password Activity", "Submit button pressed");

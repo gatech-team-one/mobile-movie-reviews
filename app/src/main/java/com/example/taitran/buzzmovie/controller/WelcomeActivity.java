@@ -8,19 +8,20 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.taitran.buzzmovie.model.Database;
-import com.example.taitran.buzzmovie.model.User;
-import com.example.taitran.buzzmovie.model.UserAuthentication;
 import com.example.taitran.buzzmovie.model.UserManagement;
 import com.example.taitran.buzzmovie.model.UserManager;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-/**
- * Activity for when the app is opened
- */
 public class WelcomeActivity extends AppCompatActivity {
+    /**
+     * Database
+     */
     private Database db;
+    /**
+     * User management
+     */
     private UserManagement getAUser;
     /**
      * ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -36,12 +37,12 @@ public class WelcomeActivity extends AppCompatActivity {
         getAUser.setActiveUser();
         String type = getAUser.getActiveUser().getType();
         if (type != null) {
-            if(type.equals("User")) {
+            if("User".equals(type)) {
                 Intent intent = new Intent(this, Dashboard.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
-            } else if (type.equals("Admin")) {
+            } else if ("Admin".equals(type)) {
                 Intent intent = new Intent(this, AdminActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -52,8 +53,8 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     /**
-     *
-     * @param w reference to the login button when pressed
+     * Login button clicked
+     * @param w reference to login button
      */
     public void onLoginButtonClicked(View w) {
         Log.d("**MYAPP**", "Login button pressed!");
@@ -76,6 +77,9 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onPause();
     }
 
+    /**
+     * Resume
+     */
     public void onResume() {
         super.onResume();
     }
